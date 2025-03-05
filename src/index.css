@@ -1,0 +1,118 @@
+@import 'tailwindcss';
+
+:root {
+	font-family: 'Nunito', sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* .slick-list {
+	overflow: visible !important;
+} */
+
+@theme {
+	--color-dark-purple: #060919;
+	--color-blue: #001c52;
+	--color-text-default: #a0a1a5;
+	--color-paging: #5f6061;
+	--color-text-default-active: #f7f9ff;
+	--color-text-info: #9aafcb;
+	--color-text-pink: #e47fbc;
+	--color-light-pink: #b986a5;
+	--color-light-purple: #8b51a7;
+
+	--shadow-cards-slider: inset -80px 0 50px -3px rgba(6, 9, 25, 0.85),
+		inset 80px 0 50px -3px rgba(6, 9, 25, 0.85);
+
+	--spacing-px-default: 68px;
+
+	--animate-fill-out-the-slide: fill-out-the-slide 5s linear forwards;
+	--animate-card-transform: card-transform 0.2s linear;
+	--animate-fill-icon: fill-icon 0.5s forwards;
+
+	@keyframes fill-out-the-slide {
+		0% {
+			width: 20px;
+		}
+		100% {
+			width: 81px;
+		}
+	}
+
+	@keyframes card-transform {
+		20% {
+			opacity: 0.2;
+		}
+		30% {
+			opacity: 1;
+		}
+		100% {
+			transform: scale(1.1);
+		}
+	}
+
+	@keyframes fill-icon {
+		from {
+			fill: none;
+		}
+		to {
+			fill: white;
+		}
+	}
+}
+
+@layer base {
+	body {
+		@apply text-text-default bg-dark-purple;
+	}
+}
+
+@layer components {
+	.primary-gradient {
+		@apply bg-gradient-to-r from-light-pink to-light-purple;
+	}
+
+	.blue-gradient-radial {
+		background: radial-gradient(#004cba 0%, #0d143b 75%);
+		box-shadow: 0 0px 60px 60px #060919 inset;
+	}
+
+	.blue-gradient-linear-top {
+		background: linear-gradient(to top, #0d143b, #060919);
+	}
+
+	.blue-gradient-linear-bottom {
+		background: linear-gradient(to bottom, #0d143b, #060919);
+	}
+
+	.hero-effects {
+		@apply bg-[radial-gradient(ellipse,rgba(6,9,25,0.25)_25%,rgba(6,9,25,1)_80%),var(--bg-img)] shadow-[inset_0_0_20px_30px_rgba(6,9,25,1)];
+	}
+
+	.hover-text {
+		@apply hover:text-text-default-active duration-200 ease-linear;
+	}
+
+	.gradient-button {
+		@apply text-text-default-active py-[6px] px-4 rounded-4xl text-lg cursor-pointer;
+	}
+
+	.additional-text {
+		@apply text-text-info text-lg;
+	}
+
+	.movie-card {
+		width: 237px;
+		height: 339px;
+	}
+
+	.actor-card {
+		width: 160px;
+		height: 240px;
+	}
+}
