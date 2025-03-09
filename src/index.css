@@ -9,14 +9,23 @@
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+
+	--new-brand-color: #5014be;
 }
 
-/* .slick-list {
-	overflow: visible !important;
-} */
+.vds-audio-layout,
+.vds-video-layout {
+	--media-brand: var(--new-brand-color);
+	--media-buffering-track-fill-color: var(--new-brand-color);
+	--media-slider-track-fill-bg: var(--new-brand-color);
+	--media-menu-checkbox-bg-active: var(--new-brand-color);
+	--media-menu-slider-track-fill-bg: var(--new-brand-color);
+	--media-chapters-progress-bg: var(--new-brand-color);
+}
 
 @theme {
 	--color-dark-purple: #060919;
+	--color-most-dark-purple: #040612;
 	--color-blue: #001c52;
 	--color-text-default: #a0a1a5;
 	--color-paging: #5f6061;
@@ -25,21 +34,24 @@
 	--color-text-pink: #e47fbc;
 	--color-light-pink: #b986a5;
 	--color-light-purple: #8b51a7;
+	--color-transparent-black: rgba(6, 9, 26, 0.4);
 
-	--shadow-cards-slider: inset -80px 0 50px -3px rgba(6, 9, 25, 0.85),
-		inset 80px 0 50px -3px rgba(6, 9, 25, 0.85);
+	--shadow-cards-slider-left: inset 80px 0 50px -3px rgba(6, 9, 25, 0.85);
+	--shadow-cards-slider-right: inset -80px 0 50px -3px rgba(6, 9, 25, 0.85);
 
 	--spacing-px-default: 68px;
+	--spacing-px-xl: 45px;
+	--spacing-px-lg: 40px;
 
 	--animate-fill-out-the-slide: fill-out-the-slide 5s linear forwards;
 	--animate-card-transform: card-transform 0.2s linear;
 	--animate-fill-icon: fill-icon 0.5s forwards;
 
 	@keyframes fill-out-the-slide {
-		0% {
+		from {
 			width: 20px;
 		}
-		100% {
+		to {
 			width: 81px;
 		}
 	}
@@ -74,7 +86,7 @@
 
 @layer components {
 	.primary-gradient {
-		@apply bg-gradient-to-r from-light-pink to-light-purple;
+		@apply from-light-pink to-light-purple bg-gradient-to-r;
 	}
 
 	.blue-gradient-radial {
@@ -91,7 +103,7 @@
 	}
 
 	.hero-effects {
-		@apply bg-[radial-gradient(ellipse,rgba(6,9,25,0.25)_25%,rgba(6,9,25,1)_80%),var(--bg-img)] shadow-[inset_0_0_20px_30px_rgba(6,9,25,1)];
+		@apply bg-[radial-gradient(ellipse,rgba(6,9,25,0.45)_20%,rgba(6,9,25,1)_80%),var(--bg-img)] shadow-[inset_0_0_30px_30px_rgba(6,9,25,1)];
 	}
 
 	.hover-text {
@@ -99,20 +111,18 @@
 	}
 
 	.gradient-button {
-		@apply text-text-default-active py-[6px] px-4 rounded-4xl text-lg cursor-pointer;
+		@apply text-text-default-active cursor-pointer rounded-4xl px-4 py-[6px] text-lg max-xl:px-3 max-xl:py-1 max-xl:text-sm;
 	}
 
 	.additional-text {
-		@apply text-text-info text-lg;
+		@apply text-text-info text-lg max-lg:text-[16px];
 	}
 
 	.movie-card {
-		width: 237px;
-		height: 339px;
+		@apply h-[339px] w-[237px] max-xl:h-[286px] max-xl:w-[200px] max-lg:h-[243px] max-lg:w-[170px];
 	}
 
 	.actor-card {
-		width: 160px;
-		height: 240px;
+		@apply h-[240px] w-[160px] max-xl:h-[210px] max-xl:w-[140px] max-lg:h-[187px] max-lg:w-[125px];
 	}
 }

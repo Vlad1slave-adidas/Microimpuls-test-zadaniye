@@ -1,19 +1,16 @@
-import { Route, Routes, useParams } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Home from '../pages/Home'
 import Movie from '../pages/Movie'
-import VideoPlayer from '../components/video_player/VideoPlayer'
-
-function VideoPlayerWrapper() {
-	const params = useParams()
-	return <VideoPlayer id={Number(params.id)} />
-}
+import VideoViewer from '../pages/VideoViewer'
+import Favorites from '../pages/Favorites'
 
 function Root() {
 	return (
 		<Routes>
 			<Route path='/' element={<Home />} />
+			<Route path='/favorites' element={<Favorites />} />
 			<Route path='/movie/:id' element={<Movie />} />
-			<Route path='/watch-movie/:id' element={<VideoPlayerWrapper />} />
+			<Route path='/player/:id' element={<VideoViewer />} />
 		</Routes>
 	)
 }

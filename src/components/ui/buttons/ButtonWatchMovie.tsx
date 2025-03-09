@@ -1,17 +1,14 @@
 import { Link } from 'react-router'
 
 interface ButtonWatchMovieProps {
-	id: number
 	text: string
 	style: string
+	link: string
 }
 
-function ButtonWatchMovie({ id, text, style }: ButtonWatchMovieProps) {
+function ButtonWatchMovie({ text, style, link }: ButtonWatchMovieProps) {
 	return (
-		<Link
-			to={`/watch-movie/${id}`}
-			className={`gradient-button primary-gradient ${style}`}
-		>
+		<Link to={link} className={`gradient-button primary-gradient ${style}`}>
 			{text}
 		</Link>
 	)

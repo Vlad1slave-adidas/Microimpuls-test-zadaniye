@@ -16,7 +16,7 @@ function Paging({ slider, sliderRef, currentSlide }: PagingProps) {
 	}, [currentSlide])
 
 	return (
-		<div className='absolute bottom-0 left-1/2 -translate-x-1/2 flex duration-200 ease-linear transition-all items-center gap-2 opacity-0 group-hover:opacity-100'>
+		<div className='absolute bottom-0 left-1/2 flex -translate-x-1/2 items-center gap-2 opacity-0 transition-all duration-200 ease-linear group-hover:opacity-100'>
 			<button
 				onClick={() => {
 					if (currentSlide === 0) {
@@ -25,7 +25,7 @@ function Paging({ slider, sliderRef, currentSlide }: PagingProps) {
 						sliderRef?.current?.slickPrev()
 					}
 				}}
-				className='duration-200 ease-linear text-white transition-all cursor-pointer opacity-0 group-hover:opacity-100'
+				className='cursor-pointer text-white opacity-0 transition-all duration-200 ease-linear group-hover:opacity-100'
 			>
 				<ChevronLeft size={22} />
 			</button>
@@ -35,13 +35,15 @@ function Paging({ slider, sliderRef, currentSlide }: PagingProps) {
 					<button
 						key={index}
 						onClick={() => sliderRef.current?.slickGoTo(index)}
-						className={`h-[5px] rounded-lg bg-paging transition-all duration-250 ${
-							currentSlide === index ? 'w-[81px]' : 'w-[32px]'
+						className={`bg-paging h-[5px] rounded-lg transition-all duration-250 ${
+							currentSlide === index
+								? 'w-[81px] max-lg:w-[70px]'
+								: 'w-[32px] max-lg:w-[20px]'
 						}`}
 					>
 						{currentSlide === index && (
 							<div
-								className={`bg-white h-full rounded-lg transition-all ${
+								className={`h-full rounded-lg bg-white transition-all ${
 									isFilling ? 'animate-fill-out-the-slide' : ''
 								}`}
 							></div>
@@ -58,7 +60,7 @@ function Paging({ slider, sliderRef, currentSlide }: PagingProps) {
 						sliderRef?.current?.slickNext()
 					}
 				}}
-				className='duration-200 ease-linear text-white transition-all cursor-pointer opacity-0 group-hover:opacity-100'
+				className='cursor-pointer text-white opacity-0 transition-all duration-200 ease-linear group-hover:opacity-100'
 			>
 				<ChevronRight size={22} />
 			</button>

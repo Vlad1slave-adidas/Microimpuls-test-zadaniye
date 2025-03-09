@@ -7,21 +7,14 @@ import Loader from '../components/ui/loader/Loader'
 import Hero from '../components/sections/Hero'
 import ActorsSlider from '../components/sliders/cards_slider/ActorsSlider'
 import MoviePromo from '../components/sections/promos/MoviePromo'
-import VideoPlayer from '../components/video_player/VideoPlayer'
 
 function Movie() {
-	const params = useParams()
-	const id = params.id
+	const { id } = useParams()
 
 	const { data, isLoading, isError } = useGetMovieQuery({ movie_id: id })
-	console.log('🚀 ~ Movie ~ data:', data)
 
 	if (isLoading) return <Loader />
 	if (isError) return <div>Error fetching movies</div>
-
-	// const videoUrl = data?.actions?.find(
-	// 	(a: any) => a.action === 'get_trailer_url'
-	// )?.url
 
 	const actors = data.actors_info.map((item: any) => ({
 		id: item.id,
@@ -29,38 +22,51 @@ function Movie() {
 		photo: item.photo,
 	}))
 
+	const fileId = data.actions[0].file_id
+
 	return (
 		<div className='w-full'>
-			<div className='px-px-default h-screen'>
+			<div className='px-px-default max-xl:px-px-xl max-lg:px-px-lg h-screen'>
 				<Header />
 				<Hero
 					id={Number(id)}
+					fileId={fileId}
 					name={data.name}
+					type={data.seasons.length > 0 ? 'serial' : 'movie'}
+					seasons={
+						data.seasons.length > 0 ? data.seasons.length : data.duration
+					}
 					backgroundImage={data.ad_banner}
 					kinopoiskRating={data.kinopoisk_rating}
 					year={data.year}
+					ageRating={data.rating}
 					genre={data.genres}
+					thumbnail={data.thumbnail_big}
+					provider={data.provider}
+					imdbRating={data.imdb_rating}
 					isMoviePage={true}
 					description={data.short_description}
 				/>
 			</div>
-			<div className='mt-6 px-px-default mb-30'>
+			<div className='px-px-default max-xl:px-px-xl max-lg:px-px-lg mt-6 mb-30'>
 				<Description
 					title={data.name}
 					description={data.description}
 					genres={data.genres}
 					year={data.year}
 					countries={data.countries}
-					seasons={data.seasons[0].name}
+					seasons={
+						data.seasons.length > 0 ? data.seasons.length : data.duration
+					}
 					kinopoiskRating={data.kinopoisk_rating}
 					ageRating={data.rating}
 					imdbRating={data.imdb_rating}
+					type={data.seasons.length > 0 ? 'serial' : 'movie'}
 				/>
 			</div>
 			<ActorsSlider slider={actors} />
-			<VideoPlayer id={data.actions[0].url} />
 			<MoviePromo name={data.name} />
-			<div className='mt-20 px-px-default'>
+			<div className='px-px-default max-xl:px-px-xl max-lg:px-px-lg mt-20 max-lg:mt-12'>
 				<Footer />
 			</div>
 		</div>

@@ -1,24 +1,19 @@
-import { ReactElement } from 'react'
+import { CSSProperties, ReactElement } from 'react'
 
 interface ButtonSecondaryProps {
 	text: string
 	icon: ReactElement
+	style?: CSSProperties
 	action?: () => void
 }
 
-function ButtonSecondary({ text, icon, action }: ButtonSecondaryProps) {
+function ButtonSecondary({ text, icon, action, style }: ButtonSecondaryProps) {
 	return (
 		<button
-			className='flex items-center gap-1 text-lg hover-text cursor-pointer'
+			className='hover-text flex cursor-pointer items-center gap-1 text-lg max-xl:text-base'
 			onClick={action}
+			style={style}
 		>
-			{/* <img
-				className='fill-text-default'
-				src={icon}
-				alt='icon'
-				width={22}
-				height={22}
-			/> */}
 			{icon}
 			<span>{text}</span>
 		</button>

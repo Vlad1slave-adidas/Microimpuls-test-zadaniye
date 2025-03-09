@@ -1,16 +1,21 @@
 import { Link } from 'react-router'
 import { ActorCardProps } from '../../../types'
 
-function ActorCard({ id, name, photo }: ActorCardProps) {
+function ActorCard({ id, name, photo, ref }: ActorCardProps) {
 	return (
 		<Link to={`/actor/${id}`}>
-			<article className='m-6 transition-transform duration-300 hover:scale-105'>
-				<img
-					src={photo}
-					className='w-full h-full rounded-2xl mb-2 actor-card'
-					alt='actor-photo'
-				/>
-				<div className='text-text-default-active text-xl '>{name}</div>
+			<article ref={ref && ref} className={`group`}>
+				<div className='actor-card relative transition-transform duration-300 ease-in-out group-hover:scale-110'>
+					<img
+						src={photo}
+						className='h-full w-full rounded-2xl'
+						alt='movie-image'
+					/>
+				</div>
+
+				<div className='text-text-default-active mt-2 max-w-[100px] text-xl transition-all duration-300 ease-in-out group-hover:mt-6'>
+					{name}
+				</div>
 			</article>
 		</Link>
 	)

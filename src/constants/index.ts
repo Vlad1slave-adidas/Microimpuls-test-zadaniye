@@ -84,27 +84,27 @@ export const FooterLinks = [
 
 export const DownloadImages = [
 	{
-		image: '/images/app-store.png',
+		image: '/icons/app-store.svg',
 		link: '/',
 	},
 	{
-		image: '/images/appGallery.png',
+		image: '/icons/appGallery.svg',
 		link: '/',
 	},
 	{
-		image: '/images/google-play.png',
+		image: '/icons/google-play.svg',
 		link: '/',
 	},
 	{
-		image: '/images/getApps.png',
+		image: '/icons/getApps.svg',
 		link: '/',
 	},
 	{
-		image: '/images/RuStore.png',
+		image: '/icons/RuStore.svg',
 		link: '/',
 	},
 	{
-		image: '/images/AllDevices.png',
+		image: '/icons/AllDevices.svg',
 		link: '/',
 	},
 ]

@@ -7,7 +7,7 @@ interface FooterLinkProps {
 
 function FooterLink({ link, text }: FooterLinkProps) {
 	return (
-		<Link className='text-[16px] hover-text' to={link}>
+		<Link className='hover-text max-xl:text-[14px]' to={link}>
 			{text}
 		</Link>
 	)

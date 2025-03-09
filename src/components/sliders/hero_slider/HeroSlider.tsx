@@ -5,12 +5,19 @@ import Hero from '../../sections/Hero'
 
 export interface SliderDataItem {
 	id: number
+	fileId?: string
+	type?: 'movie' | 'serial'
 	name: string
 	backgroundImage: string
 	kinopoiskRating: number
 	year: number
 	genre: string
 	description?: string
+	ageRating: number
+	imdbRating: number
+	thumbnail: string
+	seasons?: number
+	provider: 'start' | 'premier'
 	isMoviePage?: boolean
 }
 
@@ -33,12 +40,13 @@ function HeroSlider({ slider }: MainSliderProps) {
 		pauseOnHover: false,
 		arrows: false,
 		dots: false,
+
 		beforeChange: (_oldIndex: number, newIndex: number) =>
 			setCurrentSlide(newIndex),
 	}
 
 	return (
-		<div className='slider-container relative group'>
+		<div className='slider-container group relative'>
 			<Slider ref={sliderRef} {...settings}>
 				{slider.map(item => (
 					<Hero
@@ -48,6 +56,10 @@ function HeroSlider({ slider }: MainSliderProps) {
 						backgroundImage={item.backgroundImage}
 						kinopoiskRating={item.kinopoiskRating}
 						year={item.year}
+						thumbnail={item.thumbnail}
+						provider={item.provider}
+						ageRating={item.ageRating}
+						imdbRating={item.imdbRating}
 						genre={item.genre}
 					/>
 				))}

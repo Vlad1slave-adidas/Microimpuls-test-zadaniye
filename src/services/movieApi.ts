@@ -12,7 +12,7 @@ export const movieApi = createApi({
 			query: () => ({
 				url: `/tvmiddleware/api/noauth/selection/detail/`,
 				params: {
-					selection_id: 124661,
+					selection_id: 192922,
 					compact: 1,
 					device: 'browser',
 					client_id: CLIENT_ID,
@@ -31,19 +31,7 @@ export const movieApi = createApi({
 				},
 			}),
 		}),
-		watchMovie: builder.query<any, any>({
-			query: ({ movie_id }) => ({
-				url: `/tvmiddleware/api/noauth/video/url/`,
-				params: {
-					vfid: movie_id,
-					device: 'browser',
-					client_id: CLIENT_ID,
-					api_key: API_KEY,
-				},
-			}),
-		}),
 	}),
 })
 
-export const { useGetMoviesQuery, useGetMovieQuery, useWatchMovieQuery } =
-	movieApi
+export const { useGetMoviesQuery, useGetMovieQuery } = movieApi

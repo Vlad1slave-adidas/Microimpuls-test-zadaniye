@@ -4,11 +4,13 @@ export interface MovieCardProps {
 	year: number
 	image: string
 	rating: number
-	provider: string
+	provider?: 'start' | 'premier'
+	ref?: React.RefObject<HTMLElement | null>
 }
 
 export interface ActorCardProps {
 	id: number
 	name: string
 	photo: string
+	ref?: React.RefObject<HTMLElement | null>
 }
